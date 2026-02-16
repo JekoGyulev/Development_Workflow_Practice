@@ -36,6 +36,11 @@ addTaskBtn.addEventListener('click', () => {
     const dueInput = document.createElement('input');
     dueInput.type = 'date';
 
+    const today = new Date().toISOString().split('T')[0];
+    if(dueInput.value < today) li.style.color = 'red';
+
+    //This line is for test
+
 
     li.appendChild(categorySelect);
     li.appendChild(deleteBtn);
