@@ -32,8 +32,14 @@ addTaskBtn.addEventListener('click', () => {
         }
     });
 
+
+    const dueInput = document.createElement('input');
+    dueInput.type = 'date';
+
+
     li.appendChild(categorySelect);
     li.appendChild(deleteBtn);
+    li.appendChild(dueInput);
     taskList.appendChild(li);
     taskInput.value = "";
 });
