@@ -3,8 +3,6 @@ name: Deploy to Render
 on:
   push:
     branches: [ "qa" ]
-  pull_request:
-    branches: [ "qa" ]
 
 jobs:
   deploy:
