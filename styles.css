@@ -61,6 +61,11 @@ li.completed {
     color: gray;
 }
 
+li.completed input {
+    text-decoration: line-through;
+    color: gray;
+}
+
 button.delete-btn {
     background-color: red;
     color: white;
