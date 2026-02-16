@@ -2,7 +2,6 @@ const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 
-// Add task
 addTaskBtn.addEventListener('click', () => {
     const taskText = taskInput.value.trim();
     if (taskText === "") return;
@@ -10,12 +9,15 @@ addTaskBtn.addEventListener('click', () => {
     const li = document.createElement('li');
     li.textContent = taskText;
 
-    // Complete task on click
-    li.addEventListener('click', () => {
-        li.classList.toggle('completed');
+    const categorySelect = document.createElement('select');
+
+    ['Work', 'Personal', 'Urgent'].forEach(category => {
+        const option = document.createElement('option');
+        option.textContent = category;
+        option.value = category;
+        categorySelect.appendChild(option);
     });
 
-    // Delete button
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.classList.add('delete-btn');
@@ -24,6 +26,13 @@ addTaskBtn.addEventListener('click', () => {
         li.remove();
     });
 
+    li.addEventListener('click', (e) => {
+        if (e.target !== categorySelect && e.target !== deleteBtn ) {
+            li.classList.toggle('completed');
+        }
+    });
+
+    li.appendChild(categorySelect);
     li.appendChild(deleteBtn);
     taskList.appendChild(li);
     taskInput.value = "";
