@@ -6,6 +6,17 @@ body {
     padding: 50px;
 }
 
+body.dark {
+    background-color: #333;
+    color: #eee;
+}
+
+body.dark .container {
+    background-color: #555;
+    color: #fff;
+}
+
+
 .container {
     background-color: white;
     padding: 20px;

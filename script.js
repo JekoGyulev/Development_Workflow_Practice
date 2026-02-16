@@ -37,3 +37,17 @@ addTaskBtn.addEventListener('click', () => {
     taskList.appendChild(li);
     taskInput.value = "";
 });
+
+
+const toggleModeButton = document.getElementById('modeToggle');
+
+toggleModeButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+});
+
+
+
+
+
+
+
