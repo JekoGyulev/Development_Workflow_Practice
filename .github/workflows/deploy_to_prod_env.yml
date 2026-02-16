@@ -2,7 +2,9 @@ name: Deploy to Render
 
 on:
   push:
-    branches: [ "qa" ]
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]  
 
 jobs:
   deploy:
@@ -12,6 +14,6 @@ jobs:
     - name: Deploy to Render
       uses: JorgeLNJunior/render-deploy@v1.4.7
       with:
-        service_id: ${{ secrets.RENDER_SERVICE_QA_ID }}
+        service_id: ${{ secrets.RENDER_SERVICE_PROD_ID }}
         api_key: ${{ secrets.RENDER_API_KEY }}
         wait_deploy: true
