@@ -26,25 +26,27 @@ addTaskBtn.addEventListener('click', () => {
         li.remove();
     });
 
+
+    const today = new Date().toISOString().split('T')[0];
+    const dueInput = document.createElement('input');
+    dueInput.type = 'date';
+
+    dueInput.addEventListener("change", () => {
+       updateTaskColor(li, dueInput.value);
+    });
+
+
     li.addEventListener('click', (e) => {
-        if (e.target !== categorySelect && e.target !== deleteBtn ) {
+        if (e.target !== categorySelect && e.target !== deleteBtn && e.target !== dueInput) {
             li.classList.toggle('completed');
         }
     });
 
 
-    const dueInput = document.createElement('input');
-    dueInput.type = 'date';
-
-    const today = new Date().toISOString().split('T')[0];
-    if(dueInput.value < today) li.style.color = 'red';
-
-    //This line is for test
-
 
     li.appendChild(categorySelect);
-    li.appendChild(deleteBtn);
     li.appendChild(dueInput);
+    li.appendChild(deleteBtn);
     taskList.appendChild(li);
     taskInput.value = "";
 });
@@ -56,6 +58,16 @@ toggleModeButton.addEventListener('click', () => {
     document.body.classList.toggle('dark');
 });
 
+
+function updateTaskColor(li, dueDate) {
+    const today = new Date().toISOString().split('T')[0];
+
+    if (dueDate < today) {
+        li.style.color = 'red';
+    } else {
+        li.style.color = '';
+    }
+}
 
 
 
